@@ -3,38 +3,33 @@ package com.bheemapps.cvvalidator.utilityapp;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements RecyclerViewClickListener {
+public class DetailActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
-    private static final String TAG = "PeopleActivity";
 
-    MainViewModel model;
+    DetailViewModel model;
 
     RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_detail);
+
         ButterKnife.bind(this);
-        model = ViewModelProviders.of(this).get(MainViewModel.class);
+        model = ViewModelProviders.of(this).get(DetailViewModel.class);
         model.loadItemsList();
-        recyclerView = findViewById(R.id.rv_items);
+        recyclerView = findViewById(R.id.rv_items_detail);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         model.getItemsList().observe(this, new Observer<ItemsList>() {
@@ -45,22 +40,19 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
                 }
             }
         });
-
-
     }
 
     private void processChange(ItemsList itemsList) {
         showItemsList(itemsList.strings);
     }
 
-    private void showItemsList(List<String> peopleList) {
-        CustomAdapter customAdapter = new CustomAdapter(peopleList, this, this);
+    private void showItemsList(List<String> list) {
+        CustomAdapter customAdapter = new CustomAdapter(list, this, this);
         recyclerView.setAdapter(customAdapter);
     }
 
     @Override
     public void onRecyclerViewItemClicked(int position) {
         Toast.makeText(this, "Item Clicked", Toast.LENGTH_SHORT).show();
-
     }
 }
