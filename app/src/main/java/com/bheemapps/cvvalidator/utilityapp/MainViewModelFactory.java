@@ -12,8 +12,6 @@ public class MainViewModelFactory implements ViewModelProvider.Factory {
             return (T) new MainViewModel();
         } else if (modelClass.isAssignableFrom(DetailViewModel.class)) {
             return (T) new DetailViewModel();
-        } else if (modelClass.isAssignableFrom(ReactiveViewModel.class)) {
-            return (T) new ReactiveViewModel();
         }
 
         throw new IllegalArgumentException("Unknown ViewModel Class");

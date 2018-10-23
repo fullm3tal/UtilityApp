@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class DetailViewModel extends ViewModel {
@@ -30,7 +33,8 @@ public class DetailViewModel extends ViewModel {
 
         List<String> strings = new ArrayList<>();
         strings.add("Observable.create()");
-        strings.add("creating observables of Strings");
+        strings.add("Observable.fromCallable()");
+        strings.add("observable.fromIterable()");
         ItemsList list = new ItemsList();
         list.strings = strings;
         Observable.just(list).subscribeOn(Schedulers.io())
@@ -59,4 +63,5 @@ public class DetailViewModel extends ViewModel {
                 });
 
     }
+
 }
