@@ -80,6 +80,9 @@ public class RxCreateActivity extends AppCompatActivity {
     }
 
     private void callObservableCreate(){
+
+        //Observable.create: Observable.create lets you emit multiple items. Observable.create
+        // let's you delay the call to onNext to a later point in time.
         Observable<Integer> o = Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
