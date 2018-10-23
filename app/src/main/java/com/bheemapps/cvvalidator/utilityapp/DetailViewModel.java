@@ -29,7 +29,7 @@ public class DetailViewModel extends ViewModel {
     public void loadItemsList() {
 
         List<String> strings = new ArrayList<>();
-        strings.add("Converting Async listeners to Observables");
+        strings.add("Observable.create()");
         strings.add("creating observables of Strings");
         ItemsList list = new ItemsList();
         list.strings = strings;

@@ -15,11 +15,9 @@ import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
-
     DetailViewModel model;
 
     RecyclerView recyclerView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
