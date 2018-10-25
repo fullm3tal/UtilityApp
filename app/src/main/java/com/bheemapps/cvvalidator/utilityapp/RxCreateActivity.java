@@ -27,8 +27,8 @@ public class RxCreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rx_create);
         ButterKnife.bind(this);
         Bundle bundle= getIntent().getExtras();
-        Integer integer= bundle.getInt("Key");
-               switch (integer) {
+        String featureName= bundle.getString("Key");
+               switch (0) {
                    case 0:
                    callObservableCreate();
                    break;

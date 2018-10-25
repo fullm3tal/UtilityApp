@@ -30,8 +30,11 @@ public class MainViewModel extends ViewModel {
     public void loadItemsList() {
 
         List<String> strings = new ArrayList<>();
-        strings.add("RxJava");
-        strings.add("MVVM pattern with Livedata");
+        strings.add("RxJava 2");
+        strings.add("Dagger 2");
+        strings.add("MVVM with Livedata");
+        strings.add("MVVM with Databinding");
+
         ItemsList list = new ItemsList();
         list.strings = strings;
         Observable.just(list).subscribeOn(Schedulers.io())

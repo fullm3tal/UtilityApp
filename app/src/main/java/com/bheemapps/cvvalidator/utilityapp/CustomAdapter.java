@@ -57,7 +57,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ItemViewHo
         @Override
         public void onClick(View view) {
             int position = this.getAdapterPosition();
-            listener.onRecyclerViewItemClicked(position);
+            listener.onRecyclerViewItemClicked(items.get(position));
         }
     }
 

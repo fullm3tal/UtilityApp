@@ -58,8 +58,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     }
 
     @Override
-    public void onRecyclerViewItemClicked(int position) {
+    public void onRecyclerViewItemClicked(String name) {
         Toast.makeText(this, "Item Clicked", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, DetailActivity.class));
+        Intent intent =new Intent(this, DetailActivity.class);
+        Bundle bundle= new Bundle();
+        bundle.putString("FeatureName", name);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

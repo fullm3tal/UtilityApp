@@ -12,12 +12,14 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
     DetailViewModel model;
 
+    @BindView(R.id.rv_items_detail)
     RecyclerView recyclerView;
 
     @Override
@@ -26,9 +28,9 @@ public class DetailActivity extends AppCompatActivity implements RecyclerViewCli
         setContentView(R.layout.activity_detail);
 
         ButterKnife.bind(this);
+        String name= getIntent().getExtras().getString("FeatureName");
         model = ViewModelProviders.of(this).get(DetailViewModel.class);
-        model.loadItemsList();
-        recyclerView = findViewById(R.id.rv_items_detail);
+        model.loadItemsList(name);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         model.getItemsList().observe(this, new Observer<ItemsList>() {
@@ -51,11 +53,11 @@ public class DetailActivity extends AppCompatActivity implements RecyclerViewCli
     }
 
     @Override
-    public void onRecyclerViewItemClicked(int position) {
+    public void onRecyclerViewItemClicked(String name) {
 
         Intent intent = new Intent(this, RxCreateActivity.class);
         Bundle bundle = new Bundle();
-                bundle.putInt("Key", position);
+                bundle.putString("Key", name);
                 intent.putExtras(bundle);
                 startActivity(intent);
 

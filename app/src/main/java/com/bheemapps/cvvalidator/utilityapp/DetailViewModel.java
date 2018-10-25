@@ -29,7 +29,58 @@ public class DetailViewModel extends ViewModel {
         return responseLiveData;
     }
 
-    public void loadItemsList() {
+    public void loadItemsList(String name) {
+
+
+        switch (name) {
+
+            case "RxJava 2":
+                loadRxJavaList();
+                break;
+            case "Dagger 2":
+                loadDaggerList();
+                break;
+
+        }
+
+    }
+
+    private void loadDaggerList() {
+        List<String> strings = new ArrayList<>();
+        strings.add("Dagger Module");
+        strings.add("Dagger Component");
+        strings.add("Dagger Inject");
+        ItemsList list = new ItemsList();
+        list.strings = strings;
+        Observable.just(list).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ItemsList>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(ItemsList itemsList) {
+                        responseLiveData.setValue(itemsList);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                });
+
+
+    }
+
+    private void loadRxJavaList() {
 
         List<String> strings = new ArrayList<>();
         strings.add("Observable.create()");
