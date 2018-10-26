@@ -10,7 +10,6 @@ import dagger.Module;
 @Component(modules = {StudentModule.class})
 public interface UtilityApplicationComponent {
 
- @UtilityAppScope
  Student getStudent();
 
 

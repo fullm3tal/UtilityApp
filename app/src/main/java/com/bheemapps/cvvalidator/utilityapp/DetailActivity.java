@@ -28,7 +28,7 @@ public class DetailActivity extends AppCompatActivity implements RecyclerViewCli
         setContentView(R.layout.activity_detail);
 
         ButterKnife.bind(this);
-        String name= getIntent().getExtras().getString("FeatureName");
+        String name = getIntent().getExtras().getString("FeatureName");
         model = ViewModelProviders.of(this).get(DetailViewModel.class);
         model.loadItemsList(name);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -55,11 +55,11 @@ public class DetailActivity extends AppCompatActivity implements RecyclerViewCli
     @Override
     public void onRecyclerViewItemClicked(String name) {
 
-        Intent intent = new Intent(this, RxCreateActivity.class);
+        Intent intent = new Intent(this, InjectActivity.class);
         Bundle bundle = new Bundle();
-                bundle.putString("Key", name);
-                intent.putExtras(bundle);
-                startActivity(intent);
+        bundle.putString("Key", name);
+        intent.putExtras(bundle);
+        startActivity(intent);
 
     }
 }

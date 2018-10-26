@@ -20,7 +20,8 @@
         <activity android:name=".DetailActivity" />
         <activity android:name=".RxCreateActivity" />
         <activity android:name=".ObservableFromActivity" />
-        <activity android:name=".DaggerInjectActivity"></activity>
+        <activity android:name=".DaggerInjectActivity" />
+        <activity android:name=".InjectActivity"></activity>
     </application>
 
 </manifest>
